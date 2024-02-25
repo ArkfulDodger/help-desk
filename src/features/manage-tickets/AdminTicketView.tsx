@@ -67,7 +67,7 @@ const AdminTicketView = ({ ticketId }: Params) => {
     );
 
   return (
-    <KeyboardAwareScrollView style={styles.container}>
+    <>
       <View style={styles.header}>
         <View style={styles.row}>
           <IconButton icon="chevron-left" onPress={onBackPress} />
@@ -78,78 +78,99 @@ const AdminTicketView = ({ ticketId }: Params) => {
         </Button>
       </View>
       <Divider />
-      <View style={styles.contentContainer}>
-        <View style={styles.info}>
-          <Text>
-            <Text style={styles.title}>Name:</Text> {ticket.name}
-          </Text>
-          <Text numberOfLines={1}>
-            <Text style={styles.title}>Email:</Text> {ticket.email}
-          </Text>
-        </View>
-        <Button disabled={!ticket.attachment_url} onPress={onAttachmentPress}>
-          {ticket.attachment_url ? "View" : "No"} Attachment
-        </Button>
-        <View>
-          <Text style={styles.title}>Description:</Text>
-          <View
-            style={[
-              styles.descriptionContainer,
-              {
-                backgroundColor:
-                  colorScheme === "dark"
-                    ? Colors.dark.offBackground
-                    : Colors.light.offBackground,
-              },
-            ]}
-          >
-            <Text>{ticket.description}</Text>
+      <KeyboardAwareScrollView style={styles.container}>
+        <View style={styles.contentContainer}>
+          <View style={styles.info}>
+            <Text>
+              <Text style={styles.title}>Name:</Text> {ticket.name}
+            </Text>
+            <Text numberOfLines={1}>
+              <Text style={styles.title}>Email:</Text> {ticket.email}
+            </Text>
           </View>
+          <Button disabled={!ticket.attachment_url} onPress={onAttachmentPress}>
+            {ticket.attachment_url ? "View" : "No"} Attachment
+          </Button>
+          <View>
+            <Text style={styles.title}>Description:</Text>
+            <View
+              style={[
+                styles.descriptionContainer,
+                {
+                  backgroundColor:
+                    colorScheme === "dark"
+                      ? Colors.dark.offBackground
+                      : Colors.light.offBackground,
+                },
+              ]}
+            >
+              <Text>{ticket.description}</Text>
+            </View>
+          </View>
+          <Divider style={styles.separator} />
+          <Text style={styles.instructions}>
+            Write your response to the patient in the field below
+          </Text>
+          <TextInput
+            label={"Response"}
+            multiline
+            contentStyle={styles.input}
+            value={responseInput}
+            onChangeText={setResponseInput}
+          />
+          <Button
+            mode={"contained"}
+            onPress={onSendPress}
+            disabled={!isStringNotEmpty(responseInput)}
+          >
+            Send Response
+          </Button>
         </View>
-        <Divider style={styles.separator} />
-        <Text style={styles.instructions}>
-          Write your response to the patient in the field below
-        </Text>
-        <TextInput
-          label={"Response"}
-          multiline
-          contentStyle={styles.input}
-          value={responseInput}
-          onChangeText={setResponseInput}
-        />
-        <Button
-          mode={"contained"}
-          onPress={onSendPress}
-          disabled={!isStringNotEmpty(responseInput)}
-        >
-          Send Response
-        </Button>
-      </View>
-    </KeyboardAwareScrollView>
+      </KeyboardAwareScrollView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {},
-  contentContainer: {},
-  errorContainer: {},
-  errorText: {},
+  container: { flex: 1, padding: 20 },
+  contentContainer: { marginVertical: 15, rowGap: 15, marginBottom: 100 },
+  errorContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  errorText: { color: "gray" },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingVertical: 10,
+    paddingRight: 20,
+    paddingLeft: 10,
   },
   row: {
     flexDirection: "row",
     alignItems: "center",
   },
-  headerText: {},
-  info: {},
-  title: {},
-  separator: {},
-  descriptionContainer: {},
-  instructions: {},
-  input: {},
+  headerText: { fontSize: 18, fontWeight: "bold" },
+  info: { rowGap: 5 },
+  title: { fontSize: 18, fontWeight: "bold" },
+  separator: {
+    marginVertical: 20,
+    height: 1,
+    width: "80%",
+    alignSelf: "center",
+  },
+  descriptionContainer: {
+    borderColor: "gray",
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: 10,
+    borderRadius: 10,
+    minHeight: 50,
+    marginTop: 5,
+  },
+  instructions: { color: "gray", marginHorizontal: 40, textAlign: "center" },
+  input: { minHeight: 100 },
 });
 
 export default AdminTicketView;
