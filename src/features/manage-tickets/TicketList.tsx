@@ -80,15 +80,20 @@ const TicketList = ({}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  listContainer: {},
-  itemContainer: {},
-  info: {},
-  label: {},
-  spacer: {},
-  name: {},
-  email: {},
-  description: {},
-  status: {},
+  listContainer: { padding: 5 },
+  itemContainer: { paddingVertical: 10, paddingLeft: 20, flexDirection: "row" },
+  info: { flex: 1 },
+  label: { alignSelf: "stretch" },
+  spacer: { width: 10 },
+  name: { fontWeight: "bold", fontSize: 16, marginRight: 10, width: 100 },
+  email: { fontWeight: "normal", fontStyle: "italic", fontSize: 12 },
+  description: { color: "gray" },
+  status: {
+    width: 100,
+    paddingHorizontal: 5,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default TicketList;
