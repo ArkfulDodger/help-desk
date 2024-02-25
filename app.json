@@ -25,7 +25,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.arkfuldodger.helpdesk"
     },
     "web": {
       "bundler": "metro",
@@ -57,6 +58,12 @@
       "eas": {
         "projectId": "a9e86b1a-f62f-44e5-b3c4-80d0b4d0786c"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/a9e86b1a-f62f-44e5-b3c4-80d0b4d0786c"
     }
   }
 }
