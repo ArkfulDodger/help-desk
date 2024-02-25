@@ -10,6 +10,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { PaperProvider, MD3LightTheme, MD3DarkTheme } from "react-native-paper";
 import { Provider as ReduxProvider } from "react-redux";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
 import { useColorScheme } from "@/components/useColorScheme";
 import { store } from "@/redux/store";
@@ -62,10 +63,12 @@ function RootLayoutNav() {
         <ThemeProvider
           value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
         >
-          <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-          </Stack>
+          <ActionSheetProvider>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+            </Stack>
+          </ActionSheetProvider>
         </ThemeProvider>
       </PaperProvider>
     </ReduxProvider>
