@@ -66,7 +66,10 @@ function RootLayoutNav() {
           <ActionSheetProvider>
             <Stack>
               <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+              <Stack.Screen
+                name="modal"
+                options={{ presentation: "modal", header: () => null }}
+              />
             </Stack>
           </ActionSheetProvider>
         </ThemeProvider>

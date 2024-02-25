@@ -1,18 +1,28 @@
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, useColorScheme } from "react-native";
 
 import { Slot, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Colors from "@/utils/Colors";
 
 // Modal Screen "wrapper" for displaying any of the contained screens
 // if presented as a standalone screen, will apply missing safe area edges
 export default function ModalScreen() {
   const isPresented = router.canGoBack();
+  const colorScheme = useColorScheme();
 
   return (
     <SafeAreaView
       edges={isPresented ? [] : ["top", "bottom"]}
-      style={styles.container}
+      style={[
+        styles.container,
+        {
+          backgroundColor:
+            colorScheme === "dark"
+              ? Colors.dark.background
+              : Colors.light.background,
+        },
+      ]}
     >
       <Slot />
 
