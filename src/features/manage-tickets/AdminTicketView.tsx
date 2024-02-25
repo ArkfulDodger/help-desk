@@ -50,6 +50,7 @@ const AdminTicketView = ({ ticketId }: Params) => {
   const onSendPress = () => {
     if (!isStringNotEmpty(responseInput)) return;
 
+    console.log("Would normally send email here with body:", responseInput);
     Alert.alert("Would normally send email here with body:", responseInput);
 
     setResponseInput("");
