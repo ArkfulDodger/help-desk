@@ -82,16 +82,6 @@ export const { resetInput, handleTextInput, setAttachmentInput } =
 
 // Selector for individual input fields
 export const selectTicketInput = (state: RootState) => state.ticketInput;
-// export const selectNameInput = (state: RootState) => state.ticketInput.name;
-// export const selectEmailInput = (state: RootState) => state.ticketInput.email;
-// export const selectDescriptionInput = (state: RootState) =>
-//   state.ticketInput.description;
-// export const selectAttachmentUrlInput = (state: RootState) =>
-//   state.ticketInput.attachment_url;
-// export const selectAttachmentNameInput = (state: RootState) =>
-//   state.ticketInput.attachment_name;
-// export const selectAttachmentTypeInput = (state: RootState) =>
-//   state.ticketInput.attachment_type;
 
 // selector for whether the ticket can be submitted (non-attachment fields have values)
 export const selectCanSubmitTicket = (state: RootState) => {

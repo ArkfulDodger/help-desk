@@ -10,6 +10,7 @@ import { Button, IconButton, Text, TextInput } from "react-native-paper";
 import { Image } from "expo-image";
 import { BLURHASH } from "@/utils/constants";
 import useTicketAttachment from "./useTicketAttachment";
+import useSubmitTicket from "./useSubmitTicket";
 
 type Props = {};
 
@@ -31,6 +32,8 @@ const TicketForm = ({}: Props) => {
   const canSubmit = useAppSelector(selectCanSubmitTicket);
 
   const { pickAttachment, removeAttachment } = useTicketAttachment();
+
+  const submitTicket = useSubmitTicket();
 
   return (
     <KeyboardAwareScrollView contentContainerStyle={styles.container}>
@@ -91,6 +94,7 @@ const TicketForm = ({}: Props) => {
         labelStyle={styles.submitText}
         mode="contained"
         disabled={!canSubmit}
+        onPress={submitTicket}
       >
         Submit Ticket
       </Button>
