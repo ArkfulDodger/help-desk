@@ -13,7 +13,7 @@ export default function ModalScreen() {
 
   return (
     <SafeAreaView
-      edges={isPresented ? [] : ["top", "bottom"]}
+      edges={!isPresented || Platform.OS === "android" ? ["top", "bottom"] : []}
       style={[
         styles.container,
         {
