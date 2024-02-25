@@ -105,17 +105,27 @@ const TicketForm = ({}: Props) => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    rowGap: 20,
   },
   image: {
     width: 100,
     height: 100,
   },
-  title: {},
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
   row: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    columnGap: 10,
   },
-  multiline: {},
-  submitText: {},
+  multiline: { minHeight: 150 },
+  submitText: {
+    fontSize: 16,
+    paddingVertical: 5,
+  },
 });
 
 export default TicketForm;
