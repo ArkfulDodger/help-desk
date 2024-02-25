@@ -5,6 +5,7 @@ import { Tabs } from "expo-router";
 import Colors from "@/utils/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import useTicketsList from "@/features/manage-tickets/useTicketsList";
 
 // used to display tab bar icons of appropriate size and placement
 function TabBarIcon(props: {
@@ -17,6 +18,7 @@ function TabBarIcon(props: {
 // the root layout for the main tabs: user/admin
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  useTicketsList();
 
   return (
     <Tabs
