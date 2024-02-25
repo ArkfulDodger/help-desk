@@ -18,3 +18,5 @@ Android users can download a standalone build of the app here: [Android Build](h
 2. In the terminal, navigate to the local repository directory and execute " `npx expo start` " to start the development server and display a QR code
 3. Download the Expo Go app from the [App Store](https://apps.apple.com/us/app/expo-go/id982107779) or [Google Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en_US&gl=US)
 4. With the Expo Go app, scan the QR code
+
+Additional guidance can be found on the [Expo Website](https://docs.expo.dev/get-started/expo-go/)
