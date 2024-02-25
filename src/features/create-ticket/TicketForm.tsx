@@ -26,6 +26,7 @@ const TicketForm = ({}: Props) => {
     attachment_url,
     attachment_name,
     attachment_type,
+    submitting,
   } = useAppSelector(selectTicketInput);
 
   // whether the form can be submitted
@@ -95,6 +96,7 @@ const TicketForm = ({}: Props) => {
         mode="contained"
         disabled={!canSubmit}
         onPress={submitTicket}
+        loading={submitting}
       >
         Submit Ticket
       </Button>

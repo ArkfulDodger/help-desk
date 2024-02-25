@@ -12,6 +12,7 @@ interface TicketInputState
     "id" | "status" | "created_at" | "updated_at"
   > {
   attachment_data: string | null;
+  submitting: boolean;
 }
 
 // This is the initial state of the slice
@@ -23,6 +24,7 @@ const initialState: TicketInputState = {
   attachment_name: null,
   attachment_data: null,
   attachment_type: null,
+  submitting: false,
 };
 
 const ticketInputSlice = createSlice({
@@ -38,7 +40,7 @@ const ticketInputSlice = createSlice({
     handleTextInput: (
       state,
       action: PayloadAction<{
-        field: keyof TicketInputState;
+        field: keyof Omit<TicketInputState, "submitting">;
         input: string;
       }>
     ) => {
@@ -73,24 +75,34 @@ const ticketInputSlice = createSlice({
         state.attachment_type = action.payload.type;
       }
     },
+
+    // set whether the app is/isn't currently submitting a ticket
+    setSubmitting: (state, action: PayloadAction<boolean>) => {
+      state.submitting = action.payload;
+    },
   },
 });
 
 // Export all newly created actions here
-export const { resetInput, handleTextInput, setAttachmentInput } =
-  ticketInputSlice.actions;
+export const {
+  resetInput,
+  handleTextInput,
+  setAttachmentInput,
+  setSubmitting,
+} = ticketInputSlice.actions;
 
 // Selector for individual input fields
 export const selectTicketInput = (state: RootState) => state.ticketInput;
 
 // selector for whether the ticket can be submitted (non-attachment fields have values)
 export const selectCanSubmitTicket = (state: RootState) => {
-  let { name, email, description } = state.ticketInput;
+  let { name, email, description, submitting } = state.ticketInput;
 
   if (
     isStringNotEmpty(name) &&
     isStringNotEmpty(email) &&
-    isStringNotEmpty(description)
+    isStringNotEmpty(description) &&
+    !submitting
   ) {
     return true;
   } else {

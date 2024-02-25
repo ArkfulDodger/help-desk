@@ -3,6 +3,7 @@ import {
   resetInput,
   selectCanSubmitTicket,
   selectTicketInput,
+  setSubmitting,
 } from "@/redux/slices/ticketInputSlice";
 import { addNewTicket } from "@/redux/slices/ticketListSlice";
 import { supabase } from "@/supabase";
@@ -111,6 +112,8 @@ const useSubmitTicket = () => {
     // escape if the current ticket input cannot be submitted
     if (!canSumbitTicket) return;
 
+    dispatch(setSubmitting(true));
+
     // create the base insertable ticket object
     const ticketData: TablesInsert<"tickets"> = {
       name: name,
@@ -139,12 +142,16 @@ const useSubmitTicket = () => {
             attachment_url: attachment_online_url,
           };
         }
+      } else {
+        dispatch(setSubmitting(false));
+        return notifyError();
       }
 
       dispatch(addNewTicket(returnedTicket));
       dispatch(resetInput());
       Alert.alert("Success", "Ticket Submitted");
     } else {
+      dispatch(setSubmitting(false));
       return notifyError();
     }
   };
