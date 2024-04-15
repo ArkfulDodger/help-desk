@@ -1,8 +1,10 @@
 # Help Desk
 This is a basic "help desk" / support system ticket management system mockup, displaying both the user and admin sides of the process on separate tabs. The app will display in dark or light mode based on system settings.
 
+**NOTE:** app server is no longer online as the period where this exercise was being reviewed has passed, and Supabase freezes databases without activity. You may still view the video below to see functionality. All original code remains.
+
 ## Stack
-React Native with a Supabase back end
+React Native and Expo with a Supabase back end
 
 ## [Video Demo](https://youtu.be/5JLSugHEM4I?si=UB1JntUxuuq5GJJw)
 Click above for a brief demonstration of the app functionality
